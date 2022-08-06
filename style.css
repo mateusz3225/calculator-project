@@ -1,0 +1,12 @@
+
+.buttons{
+    display: flex;
+
+}
+.displayResult {
+    display: flex;
+    padding:40px;
+}
+.digits {
+    display: flex;
+}
