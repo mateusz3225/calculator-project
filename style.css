@@ -1,12 +1,25 @@
 
-.buttons{
+.buttons {
     display: flex;
 
 }
 .displayResult {
     display: flex;
-    padding:40px;
+    
+    height:40px;
+    flex-wrap: wrap;
+}
+.digits .digit:hover {
+    
+    border: 2px solid black;
+    
+    
 }
 .digits {
     display: flex;
+    gap:5px;
+}
+
+button:hover {
+border: 2px solid black;
 }
