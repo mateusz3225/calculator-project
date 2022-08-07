@@ -2,6 +2,7 @@ const displayResult= document.querySelector('.displayResult');
 const clear = document.querySelector('.clear');
 const number= document.querySelectorAll('.digits') ;
 const operationss= document.querySelectorAll('.buttons') ;
+const annoyingDivClick= document.querySelector('.digits') ;
 let storedValue= displayResult;
 const initiator= document.querySelector('.initiator');
 let valueA=0;
@@ -12,7 +13,7 @@ let clicked= false;
 let clickedtwo= false;
 let result=false;
 operationss.forEach((operation)=> {operation.addEventListener('click',(operation)=> { 
-    
+   
     valueA= parseInt(storedValue);
     
     clickedtwo=true;
@@ -38,9 +39,9 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
 
  initiator.addEventListener('click',()=> { 
    
-    valueB= parseInt(displayResult.textContent);
-    operate (valueA,valueB );console.log(valueA,valueB);});
-    clickedtwo=false;
+    valueA= parseInt(displayResult.textContent);
+    operate (valueB,valueA );console.log(valueA,valueB);});
+    
 
 function operate(a,b){
    if (whatWasClicked=='add' ){return addNumbers(a,b)} 
@@ -64,12 +65,13 @@ function cleardisplay() {
 function changeDisplay() {
     number.forEach( (button)=>
      {
+        
         button.addEventListener('click', (button)=> 
-        { 
+        {   if(!button.target.classList.contains('annoyingDivClick')) {
             if (clicked==true){displayResult.textContent='';displayResult.textContent+=button.target.textContent; clicked=false;}
              else {displayResult.textContent+=button.target.textContent;};
             storedValue=displayResult.textContent;
-            
+        };
         });
     } );
     };

@@ -33,8 +33,9 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
 
 
  initiator.addEventListener('click',()=> { 
-    valueA= parseInt(displayResult.textContent);
-    operate (valueA,valueB )});
+    console.log(valueA,valueB);
+    valueB= parseInt(displayResult.textContent);
+    operate (valueB,valueA )});
 
 function operate(a,b){
    if (whatWasClicked=='add' ){return addNumbers(a,b)} 
