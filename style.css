@@ -4,14 +4,15 @@
     display: flex;
     gap:22px;
     justify-content: center;
+    
 }
 .displayResult {
     display: flex;
     border: 2px solid black;
-    height:40px;
-    width: 275px;
+    height:60px;
+    width: 510px;
     margin: 0 auto;
-    font-size: 40px;
+    font-size: 60px;
     justify-content: right;
     overflow:hidden;
 
@@ -50,4 +51,8 @@ border-radius: 2px;
 .clear {
     display: inline-block;
     margin: 20px;
+}
+button {
+    padding:20px;
+    font-size: 24px;
 }

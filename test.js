@@ -12,20 +12,23 @@ let valueB=0;
 let clicked= false;
 let clickedtwo= false;
 let result=false;
+let afterResult=false;
+let stringOfNumbers='';
 operationss.forEach((operation)=> {operation.addEventListener('click',(operation)=> { 
    
-    valueA= parseInt(storedValue);
+    valueA= parseFloat(storedValue);
     
     clickedtwo=true;
     if(clickedtwo==true) {
-        
+        if (afterResult==false){
         console.log(valueA,valueB);
+        
         operate(valueB,valueA);
-        valueB= parseInt(displayResult.textContent);
+        valueB= parseFloat(displayResult.textContent);
         
         clicked=true;
-        
-    };
+        } else {afterResult=false; valueB= '';operate(valueB,valueA);displayResult.textContent=''; };
+    } 
     
     
 
@@ -38,9 +41,15 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
 
 
  initiator.addEventListener('click',()=> { 
-   
-    valueA= parseInt(displayResult.textContent);
-    operate (valueB,valueA );console.log(valueA,valueB);});
+    valueA= parseFloat(displayResult.textContent);
+    if(clickedtwo==true) {
+    operate (valueB,valueA );console.log(valueA,valueB);
+    valueB=parseFloat(displayResult.textContent);
+    
+    clicked=true;
+    };
+    afterResult= true;
+});
     
 
 function operate(a,b){
@@ -50,7 +59,7 @@ function operate(a,b){
 
    else if(whatWasClicked=='divide'){return divideNumbers(a,b)} ;
    
-  
+    
    
 }
 
@@ -60,40 +69,47 @@ cleardisplay();
 
 
 function cleardisplay() {
-    clear.addEventListener('click', ()=> {displayResult.textContent='';valueA=0;whatWasClicked='';valueB=0;lastOperationValue=0;} );
+    clear.addEventListener('click', ()=> {displayResult.textContent='';valueA=0;whatWasClicked='';valueB=0;lastOperationValue=0;afterResult=false;} );
 }
 function changeDisplay() {
     number.forEach( (button)=>
      {
         
         button.addEventListener('click', (button)=> 
-        {   if(!button.target.classList.contains('annoyingDivClick')) {
+        {  
+            stringOfNumbers=displayResult.textContent;  
+            if (stringOfNumbers.includes('.') && button.target.textContent=='.') {button.target.textContent=''; };
+             if(!button.target.classList.contains('annoyingDivClick')) {
             if (clicked==true){displayResult.textContent='';displayResult.textContent+=button.target.textContent; clicked=false;}
              else {displayResult.textContent+=button.target.textContent;};
             storedValue=displayResult.textContent;
+            
+            
+           
         };
         });
     } );
     };
     function addNumbers(a,b){
-        valueB= parseInt(displayResult.textContent); 
+        valueB= parseFloat(displayResult.textContent); 
         displayResult.textContent= a+b;
         
        
         
     };
     function subtractNumbers(a,b){
-        valueB= parseInt(displayResult.textContent); 
+        valueB= parseFloat(displayResult.textContent); 
         displayResult.textContent= a-b;
         
         };
         function multiplyNumbers(a,b){
-            valueB= parseInt(displayResult.textContent); 
+            valueB= parseFloat(displayResult.textContent); 
             displayResult.textContent= a*b;
             
             };
             function divideNumbers(a,b){
-                valueB= parseInt(displayResult.textContent);
+                if ( valueA==0) {displayResult.textContent=('ERROR ') } else {
+                valueB= parseFloat(displayResult.textContent);
                 displayResult.textContent= Math.round(((a/b))*100000)/100000;
-                
+                };
                 };
