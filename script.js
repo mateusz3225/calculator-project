@@ -54,11 +54,11 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
     
 
 function operate(a,b){
-   if (whatWasClicked=='add' ){return addNumbers(a,b)} 
-   else if(whatWasClicked=='subtract' ){return subtractNumbers(a,b)}
-   else if(whatWasClicked=='multiply' ){return multiplyNumbers(a,b)}
+   if (whatWasClicked=='+' ){return addNumbers(a,b)} 
+   else if(whatWasClicked=='-' ){return subtractNumbers(a,b)}
+   else if(whatWasClicked=='*' ){return multiplyNumbers(a,b)}
 
-   else if(whatWasClicked=='divide'){return divideNumbers(a,b)} ;
+   else if(whatWasClicked=='/'){return divideNumbers(a,b)} ;
    
     
    

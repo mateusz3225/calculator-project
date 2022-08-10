@@ -5,6 +5,7 @@ const operationss= document.querySelectorAll('.buttons') ;
 const annoyingDivClick= document.querySelector('.digits') ;
 let storedValue= displayResult;
 const initiator= document.querySelector('.initiator');
+const undo= document.querySelector('.undo');
 let valueA=0;
 let whatWasClicked= '';
 let lastOperationValue=0;
@@ -21,7 +22,7 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
     clickedtwo=true;
     if(clickedtwo==true) {
         if (afterResult==false){
-        console.log(valueA,valueB);
+        
         
         operate(valueB,valueA);
         valueB= parseFloat(displayResult.textContent);
@@ -43,7 +44,7 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
  initiator.addEventListener('click',()=> { 
     valueA= parseFloat(displayResult.textContent);
     if(clickedtwo==true) {
-    operate (valueB,valueA );console.log(valueA,valueB);
+    operate (valueB,valueA );
     valueB=parseFloat(displayResult.textContent);
     
     clicked=true;
@@ -66,7 +67,7 @@ function operate(a,b){
 
 changeDisplay();
 cleardisplay();
-
+DeleteLast();
 
 function cleardisplay() {
     clear.addEventListener('click', ()=> {displayResult.textContent='';valueA=0;whatWasClicked='';valueB=0;lastOperationValue=0;afterResult=false;} );
@@ -113,3 +114,13 @@ function changeDisplay() {
                 displayResult.textContent= Math.round(((a/b))*100000)/100000;
                 };
                 };
+function DeleteLast(){
+    undo.addEventListener('click', ()=> {
+        stringOfNumbers=displayResult.textContent; 
+        stringOfNumbers=stringOfNumbers.slice(0,(stringOfNumbers.length-1));
+
+        displayResult.textContent=stringOfNumbers;
+    
+    } );
+
+}
