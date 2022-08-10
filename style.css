@@ -23,6 +23,10 @@
     
     
 }
+button:active{
+    background-color: rgb(167, 167, 167);
+}
+
 .digits {
     display: grid;
     gap:5px;
