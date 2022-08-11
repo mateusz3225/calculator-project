@@ -2,16 +2,16 @@
 
 .buttons {
     display: flex;
-    gap:22px;
+    gap:5px;
     justify-content: center;
-    
+    flex-direction: column;
 }
 .displayResult {
     display: flex;
     border: 2px solid black;
     height:60px;
     width: 510px;
-    margin: 0 auto;
+    margin: 10px auto;
     font-size: 60px;
     justify-content: right;
     overflow:hidden;
@@ -19,7 +19,7 @@
 }
 .digits .digit:hover {
     
-    border: 2px solid black;
+    border: 2px solid rgb(255, 0, 76);
     
     
 }
@@ -33,13 +33,13 @@ button:active{
     justify-content: center;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    width:100px;
-    MARGIN:0 auto;
+    
+    
 }
 
 button:hover {
-border: 2px solid black;
-border-radius: 2px;
+border: 2px solid rgb(255, 0, 76);
+
 }
 .displaySymbols {
     display: flex;
@@ -59,4 +59,12 @@ border-radius: 2px;
 button {
     padding:20px;
     font-size: 24px;
+    border: 2px solid rgb(182, 178, 178);
+    border-radius: 5px;
+    
+}
+.container2 {
+    display: flex;
+    justify-content:center;
+    gap:25px;
 }

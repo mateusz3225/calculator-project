@@ -15,11 +15,13 @@ let clickedtwo= false;
 let result=false;
 let afterResult=false;
 let stringOfNumbers='';
+let onlyOneTime=false;
 operationss.forEach((operation)=> {operation.addEventListener('click',(operation)=> { 
    
-    valueA= parseFloat(storedValue);
+    
     
     clickedtwo=true;
+    onlyOneTime=true;
     if(clickedtwo==true) {
         if (afterResult==false){
         
@@ -28,20 +30,21 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
         valueB= parseFloat(displayResult.textContent);
         
         clicked=true;
-        } else {afterResult=false; valueB= '';operate(valueB,valueA);displayResult.textContent=''; };
+        } else {afterResult=false; ;operate(valueB,valueA);displayResult.textContent=''; };
     } 
     
     
 
     whatWasClicked=`${operation.target.textContent}`;
-
-   
+    
+    
    
    
  });});
 
 
  initiator.addEventListener('click',()=> { 
+    if (onlyOneTime==true){
     valueA= parseFloat(displayResult.textContent);
     if(clickedtwo==true) {
     operate (valueB,valueA );
@@ -50,15 +53,17 @@ operationss.forEach((operation)=> {operation.addEventListener('click',(operation
     clicked=true;
     };
     afterResult= true;
+    onlyOneTime=false;
+};
 });
     
 
 function operate(a,b){
-   if (whatWasClicked=='+' ){return addNumbers(a,b)} 
-   else if(whatWasClicked=='-' ){return subtractNumbers(a,b)}
-   else if(whatWasClicked=='*' ){return multiplyNumbers(a,b)}
+   if (whatWasClicked=='+' ){ addNumbers(a,b)} 
+   else if(whatWasClicked=='-' ){ subtractNumbers(a,b)}
+   else if(whatWasClicked=='*' ){ multiplyNumbers(a,b)}
 
-   else if(whatWasClicked=='/'){return divideNumbers(a,b)} ;
+   else if(whatWasClicked=='/'){ divideNumbers(a,b)} ;
    
     
    
@@ -70,7 +75,7 @@ cleardisplay();
 DeleteLast();
 
 function cleardisplay() {
-    clear.addEventListener('click', ()=> {displayResult.textContent='';valueA=0;whatWasClicked='';valueB=0;lastOperationValue=0;afterResult=false;} );
+    clear.addEventListener('click', ()=> {displayResult.textContent='';valueA=0;whatWasClicked='';valueB=0;lastOperationValue=0;afterResult=false;onlyOneTime=true;} );
 }
 function changeDisplay() {
     number.forEach( (button)=>
@@ -78,17 +83,20 @@ function changeDisplay() {
         
         button.addEventListener('click', (button)=> 
         {  
+             if ( button.target.textContent!=='='){
+                
             stringOfNumbers=displayResult.textContent;  
             if (stringOfNumbers.includes('.') && button.target.textContent=='.') {button.target.textContent=''; };
-             if(!button.target.classList.contains('annoyingDivClick')) {
+            
+             if(!button.target.classList.contains('annoyingDivClick') ) {
             if (clicked==true){displayResult.textContent='';displayResult.textContent+=button.target.textContent; clicked=false;}
              else {displayResult.textContent+=button.target.textContent;};
-            storedValue=displayResult.textContent;
+             storedValue=displayResult.textContent;
             
             
            
         };
-        });
+      }  });
     } );
     };
     function addNumbers(a,b){
